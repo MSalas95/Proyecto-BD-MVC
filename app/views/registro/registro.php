@@ -46,7 +46,7 @@ $contenido =
 	<div class="registrarse">
 	    <div class="row fila">
 	    	<div class="col-md-6">
-	    		<a href="login"><button type="button" class="btn btn-danger" >Regresar</button></a>
+	    		<a href="public/login"><button type="button" class="btn btn-danger" >Regresar</button></a>
 	    	</div>
 	    	<div class="col-md-6">
 	    		<input type="submit" name="enviar" value="Registrarse" class="btn btn-primary">
@@ -56,7 +56,7 @@ $contenido =
 	</div>	     
 </form>';
 
-require_once '../public/res/templates/login_registro.php';
+require_once '../app/res/templates/login_registro.php';
 
 ;
 

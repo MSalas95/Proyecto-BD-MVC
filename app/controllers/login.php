@@ -21,15 +21,9 @@ class Login extends Controller
 		
 	}
 
-	public function log(){
-		$this->view('login/login');
-		if (isset($_POST['enviar'])){
+	public function tabla(){
+		$this->view('login/tab');
 			
-			$cedula = $_POST['inputCed'];
-			$clave = $_POST['inputPassword'];
-			$this->login($cedula,$clave);		
-			
-		}	
 	}
 	
 
