@@ -10,9 +10,13 @@
 	<link href="app/res/css/admin.css"         rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
 	<script src="app/res/js/jquery.min.js"></script>
+	
 	<script src="app/res/js/bootstrap.min.js"></script>
 	<script src="app/res/js/bootstrap-table.js"></script>
+	<script src="app/res/js/bootstrap-table-toolbar.js"></script>
 	<script src="app/res/js/bootstrap-table-es-SP.js"></script>
+
+	
 </head>
 <body>
 
@@ -63,6 +67,7 @@
 				data-show-refresh="true"
 				data-toolbar="#toolbar"
 				data-query-params="queryParams"
+				data-advanced-search="true"
 				data-locale="es-SP">
 		    <thead>
 		        <tr>
@@ -79,6 +84,10 @@
 	</div>
 
 	<script type="text/javascript">
+
+		function formatAdvancedSearch(){
+			return 'Busqueda avanzada';
+		}
 
 		function cellStyle(value, row, index) {
 		    
@@ -102,7 +111,8 @@
 		}
 
 		function stateFormatter(value, row, index) {
-    		return '';
+			if (row.cedula=='25058046') {return 'Reparado';};
+    		return 'No reparado';
 		}
 		
 		function queryParams() {
