@@ -52,7 +52,7 @@
 
 	<div class="container" style="margin-top:40px;">
 		<table  id="eventsTable" 
-				class="table table-hover" 
+				class="table table-hover table-bordered" 
 				data-toggle="table" 
 				data-url="app/res/data/data1.json"
 				data-height="0"
@@ -65,6 +65,7 @@
 				data-show-refresh="true"
 				data-toolbar="#toolbar"
 				data-query-params="queryParams"
+				data-cache="false"
 				data-locale="es-SP">
 		    <thead>
 		        <tr>
@@ -72,7 +73,7 @@
 		            <th data-field="id" data-sortable="true" data-align="center">ID</th>
 		            <th data-field="name" data-sortable="true" data-align="center">Nombre</th>
 		            <th data-field="price" data-align="center" data-formatter="starsFormatter">Precio</th>
-		            <th data-field="action" data-formatter="actionFormatter" data-events="actionEvents">Accion</th>
+		            <th data-field="action" data-align="center" data-formatter="actionFormatter" data-events="actionEvents">Accion</th>
 		        </tr>
 		    </thead>
 		</table>

@@ -19,14 +19,6 @@ class Login extends Controller
 			
 		}	
 		
-	}
-
-	public function tabla(){
-		$this->view('login/tab');
-			
-	}
-	
-
-	
+	}	
 	
 }
