@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Prueba tabla</title>
+	<title>Clientes</title>
 	<base href="http://localhost/proyectobd/">
 	<link href="app/res/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	<link href="app/res/css/awesome-bootstrap-checkbox.css"         rel="stylesheet">
@@ -54,7 +54,7 @@
 				data-url="public/data/clientes"
 				data-toggle="table"
 				data-height="0"
-				data-page-size = "18"
+				data-page-size = "10"
 				data-page-list = "[0]"
 				data-show-columns="true"
 				data-click-to-select="true"
@@ -67,12 +67,12 @@
 		    <thead>
 		        <tr>
 		        	<th data-field="state" data-checkbox="true"></th>
-		            <th data-field="cedula" data-sortable="true" data-align="center">Cedula</th>
+		            <th data-field="cedula"  data-sortable="true" data-align="center">Cedula</th>
 		            <th data-field="nombre" data-sortable="true" data-align="center">Nombre</th>
 		            <th data-field="apellido" data-align="center">Apellido</th>
 		            <th data-field="email" data-sortable="true" data-align="center">Email</th>
 		            <th data-field="telefono"  data-sortable="true" data-align="center">Telefono</th>
-		            <th data-field="estado"  data-align="center" data-cell-style="cellStyle" data-formatter="stateFormatter">Estado</th>
+		            <th data-field="estado" data-width= "0"data-sortable="true" data-align="center" data-cell-style="cellStyle" data-formatter="stateFormatter">Estado</th>
 		        </tr>
 		    </thead>
 		</table>
