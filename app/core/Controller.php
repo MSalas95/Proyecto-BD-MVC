@@ -38,7 +38,7 @@ class Controller
 
 		$query = 'select array_to_json(array_agg(row_to_json(t)))
 				    from (
-				      select * from "Cliente" Order by cedula
+				      select * from cliente Order by cedula
 				    ) t'; 
 		$rs = pg_query($cnx, $query) or die("No se puede ejecutar la consulta $query\n");
 		$row = pg_fetch_row($rs);
