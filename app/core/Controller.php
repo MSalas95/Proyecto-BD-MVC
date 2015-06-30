@@ -23,7 +23,7 @@ class Controller
 
 	public function conectarBD(){
 
-		$usuario = "postgres";$passwd = "";$db = "dfilo";$port = 5432;$host = "localhost";
+		$usuario = "postgres";$passwd = "123";$db = "dfilo";$port = 5432;$host = "localhost";
 
 		$con = "host=$host port=$port dbname=$db user=$usuario password=$passwd";
 		$cnx = pg_connect($con) or die ("Error de conexion. ". pg_last_error());

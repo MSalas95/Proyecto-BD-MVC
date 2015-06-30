@@ -8,9 +8,10 @@
 	<link href="app/res/css/awesome-bootstrap-checkbox.css"         rel="stylesheet">
 	<link href="app/res/css/bootstrap-table.css"         rel="stylesheet">
 	<link href="app/res/css/admin.css"         rel="stylesheet">
+	<link href="app/res/css/toastr.min.css"         rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
 	<script src="app/res/js/jquery.min.js"></script>
-	
+	<script src="app/res/js/toastr.min.js"></script>
 	<script src="app/res/js/bootstrap.min.js"></script>
 	<script src="app/res/js/bootstrap-table.js"></script>
 	<script src="app/res/js/bootstrap-table-toolbar.js"></script>
@@ -43,10 +44,10 @@
 		
 
 	<div id="toolbar" class="btn-group">
-	    <button type="button" class="btn btn-default">
+	    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
 	        <i class="glyphicon glyphicon-plus"></i>
 	    </button>
-	    <button type="button" class="btn btn-default">
+	    <button type="button" class="btn btn-default" onclick="eliminar()">
 	        <i class="glyphicon glyphicon-trash"></i>
 	    </button>
 	</div>
@@ -75,6 +76,7 @@
 		            <th data-field="cedula"  data-sortable="true" data-align="center">Cedula</th>
 		            <th data-field="nombre" data-sortable="true" data-align="center">Nombre</th>
 		            <th data-field="apellido" data-align="center">Apellido</th>
+		            <th data-field="direccion" data-align="center" data-visible="false">Dirección</th>
 		            <th data-field="email" data-sortable="true" data-align="center">Email</th>
 		            <th data-field="telefono"  data-sortable="true" data-align="center">Telefono</th>
 		            <th data-field="estado" data-width= "0"data-sortable="true" data-align="center" data-cell-style="cellStyle" data-formatter="stateFormatter">Estado</th>
@@ -82,6 +84,68 @@
 		    </thead>
 		</table>
 	</div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Insertar cliente</h4>
+	      </div>
+	      <div class="modal-body modal-body-custom">
+	      
+	      	<form class="form-horizontal" method="post">
+	      	  <div class="form-group" >
+			 	<label for="inputEmail3" class="col-sm-4 control-label">Cedula</label>
+			  	<div class="col-sm-6">
+			  		 <input type="text" class="form-control input-md" name="cedula" placeholder="Cedula" id="cedula" required autofocus>
+			  	
+			  	</div> 
+			  </div>
+			  <div class="form-group">
+			 	<label for="inputEmail3" class="col-sm-4 control-label">Nombre</label>
+			  	<div class="col-sm-6">
+			  		 <input type="text" class="form-control input-md" name="nombre" placeholder="Nombre" id="nombre" required >
+			  	</div> 
+			  </div>
+			  <div class="form-group">
+			 	<label for="inputEmail3" class="col-sm-4 control-label">Apellido</label>
+			  	<div class="col-sm-6">
+			  		 <input type="text" class="form-control input-md" name="apellido" placeholder="Apellido" id="apellido" required>
+			  	</div> 
+			  </div>
+			  <div class="form-group">
+			 	<label for="inputEmail3" class="col-sm-4 control-label">Direccion</label>
+			  	<div class="col-sm-6">
+			  		 <input type="text" class="form-control input-md" name="direccion" placeholder="Direccion" id="direccion" required>
+			  	</div> 
+			  </div>
+			  <div class="form-group">
+			 	<label for="inputEmail3" class="col-sm-4 control-label">Email</label>
+			  	<div class="col-sm-6">
+			  		 <input type="text" class="form-control input-md" name="email" placeholder="Email" id="email" required>
+			  	</div> 
+			  </div>
+			  <div class="form-group">
+			 	<label for="inputEmail3" class="col-sm-4 control-label">Teléfono</label>
+			  	<div class="col-sm-6">
+			  		 <input type="text" class="form-control input-md" name="telefono" placeholder="Teléfono" id="telefono" required>
+			  	</div> 
+			  </div>
+			  		<div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+	        <input type="submit" name="enviar" value="Aceptar" class="btn btn-primary">
+	      </div>	 			  
+			</form>
+
+	      </div>
+	      
+	    </div>
+	  </div>
+	</div>
+	<!-- Fin de modal -->
+
 
 	<script type="text/javascript">
 
@@ -125,6 +189,35 @@
 		    };
 		}		
 		
+		function eliminar(){
+			
+			toastr.options = {
+			  "closeButton": true,
+			  "debug": false,
+			  "newestOnTop": false,
+			  "progressBar": false,
+			  "positionClass": "toast-bottom-full-width",
+			  "preventDuplicates": false,
+			  "onclick": null,
+			  "showDuration": "300",
+			  "hideDuration": "1000",
+			  "timeOut": 0,
+			  "extendedTimeOut": 0,
+			  "showEasing": "swing",
+			  "hideEasing": "linear",
+			  "showMethod": "fadeIn",
+			  "hideMethod": "fadeOut",
+			  "tapToDismiss": false
+			}
+			var msg = '¿Desea eliminar los elementos seleccionados?</br></br> \
+			<button type="button" class="btn btn-default" onclick="closeToast()">Cancelar</button> \
+			<button type="button" class="btn btn-primary " style="margin-left: 10px;">Aceptar</button>';
+			toastr.warning(msg);
+		}
+
+		function closeToast(){
+			toastr.clear();
+		}
 
 	</script>
 
