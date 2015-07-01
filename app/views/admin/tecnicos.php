@@ -1,6 +1,6 @@
 <?php 
-	$titulo = "Dispositivos";
-	$position = 1;	
+	$titulo = "Técnicos";
+	$position = 3;	
 	require_once '../app/res/templates/header.php';
 ?>
 

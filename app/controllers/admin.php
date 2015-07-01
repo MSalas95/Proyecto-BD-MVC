@@ -12,18 +12,7 @@ class Admin extends Controller
 		$this->view('admin/prueba');		
 		
 	}
-
-	public function prueba()
-	{
-		$this->view('admin/prueba');
-	}
-
-	public function prueba2()
-	{	
-		$clientes = $this->getCliente();
-		$this->view('admin/prueba2',[$clientes]);
-	}
-
+	
 	public function configuracion()
 	{
 		$this->view('admin/configuracion');
@@ -72,7 +61,10 @@ class Admin extends Controller
 	{
 		$this->view('admin/repuestos');
 	}
-
+	public function tecnicos()
+	{
+		$this->view('admin/tecnicos');
+	}
 	
 
 	

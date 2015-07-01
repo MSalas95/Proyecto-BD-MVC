@@ -106,7 +106,7 @@ class Controller
 		if ($rs)
 		{
 			echo '<script language="javascript">';
-			echo 'success_msg("Cliente insertado correctamente.");';
+			echo 'success_msg("Cliente agregado correctamente.");';
 			echo '</script>';
 		}else{
 			$error = pg_last_error($cnx);	
