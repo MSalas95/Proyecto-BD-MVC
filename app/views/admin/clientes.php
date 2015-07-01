@@ -80,13 +80,14 @@
 		            <th data-field="direccion" data-align="center" data-visible="false">Dirección</th>
 		            <th data-field="email" data-align="center">Email</th>
 		            <th data-field="telefono"  data-align="center">Telefono</th>
+		            <th data-field="action" data-align="center" data-formatter="actionFormatter" data-events="actionEvents">Accion</th>
 		            <!--<th data-field="estado" data-width= "0"data-sortable="true" data-align="center" data-cell-style="cellStyle" data-formatter="stateFormatter">Estado</th>-->
 		        </tr>
 		    </thead>
 		</table>
 	</div>
 
-	<!-- Modal -->
+	<!-- Modal Para Insertar-->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	  <div class="modal-dialog" role="dialog">
 	    <div class="modal-content">
@@ -147,6 +148,67 @@
 	</div>
 	<!-- Fin de modal -->
 
+	<!-- Modal Para Modificar-->
+	<div class="modal fade" id="modificarModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Modificar cliente</h4>
+	      </div>
+	      <div class="modal-body modal-body-custom">
+	      
+	      	<form class="form-horizontal" method="post">
+	      	  <div class="form-group" >
+			 	<label for="inputEmail3" class="col-sm-4 control-label">Cedula</label>
+			  	<div class="col-sm-6">
+			  		 <input type="text" class="form-control input-md " name="inputCed2" placeholder="Cedula" id="inputCed2" readonly>
+			  	
+			  	</div> 
+			  </div>
+			  <div class="form-group">
+			 	<label for="inputEmail3" class="col-sm-4 control-label">Nombre</label>
+			  	<div class="col-sm-6">
+			  		 <input type="text" class="form-control input-md" name="inputNom2" placeholder="Nombre" id="inputNom2" >
+			  	</div> 
+			  </div>
+			  <div class="form-group">
+			 	<label for="inputEmail3" class="col-sm-4 control-label">Apellido</label>
+			  	<div class="col-sm-6">
+			  		 <input type="text" class="form-control input-md" name="inputApe2" placeholder="Apellido" id="inputApe2" >
+			  	</div> 
+			  </div>
+			  <div class="form-group">
+			 	<label for="inputEmail3" class="col-sm-4 control-label">Direccion</label>
+			  	<div class="col-sm-6">
+			  		 <input type="text" class="form-control input-md" name="inputDir2" placeholder="Direccion" id="inputDir2">
+			  	</div> 
+			  </div>
+			  <div class="form-group">
+			 	<label for="inputEmail3" class="col-sm-4 control-label">Email</label>
+			  	<div class="col-sm-6">
+			  		 <input type="text" class="form-control input-md" name="inputEmail2" placeholder="Email" id="inputEmail2" required>
+			  	</div> 
+			  </div>
+			  <div class="form-group">
+			 	<label for="inputEmail3" class="col-sm-4 control-label">Teléfono</label>
+			  	<div class="col-sm-6">
+			  		 <input type="text" class="form-control input-md" name="inputTel2" placeholder="Teléfono" id="inputTel2" required>
+			  	</div> 
+			  </div>
+			  		<div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+	        <input type="submit" name="enviar2" value="Aceptar" class="btn btn-primary">
+	      </div>	 			  
+			</form>
+
+	      </div>
+	      
+	    </div>
+	  </div>
+	</div>
+	<!-- Fin de modal -->
+
 
 	<script type="text/javascript">
 
@@ -188,7 +250,37 @@
 		        per_page: 100,
 		        page: 1
 		    };
-		}		
+		}	
+
+		function actionFormatter(value, row, index) {
+		    return [
+		        '<a class="edit" data-toggle="modal" data-target="#modificarModal" style="margin-left:10px; margin-right:10px;" style href="javascript:void(0)" title="Editar">',
+		        '<i class="glyphicon glyphicon-edit"></i>',
+		        '</a>',
+		        '<a class="remove " href="javascript:void(0)" title="Eliminar">',
+		        '<i class="glyphicon glyphicon-remove"></i>',
+		        '</a>'
+		    ].join('');
+		}	
+
+		window.actionEvents = {
+		    
+		    'click .edit': function (e, value, row, index) {
+
+		    	$("#inputCed2").val(row.cedula);
+		    	$("#inputNom2").val(row.nombre);
+		    	$("#inputApe2").val(row.apellido);
+		    	$("#inputDir2").val(row.direccion);
+		    	$("#inputTel2").val(row.telefono);
+		    	$("#inputEmail2").val(row.email);
+
+		        $('#eventsTable').bootstrapTable('refresh'); //actualiza la tabla
+		    },
+		    'click .remove': function (e, value, row, index) {
+		        alert('You click remove icon, row: ' + row.cedula);
+		        console.log(value, row, index);
+		    }
+		};
 		
 		function eliminar(){
 			

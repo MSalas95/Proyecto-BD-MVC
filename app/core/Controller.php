@@ -115,5 +115,37 @@ class Controller
 			echo '</script>';
 		}	
 		pg_close($cnx);
-	}	
+	}
+
+	//-------------------------------MODIFICAR--------------------------------
+	public function modificarCliente($cedula,$nombre,$apellido,$direccion,$email,$telefono)
+	{
+		require_once '../app/models/Cliente.php';
+		$cliente = new Cliente($cedula,$nombre,$apellido,$direccion,$email,$telefono);
+		
+		$sql = 	"UPDATE cliente 
+				set 
+				nombre='$cliente->nombre',
+				apellido='$cliente->apellido', 
+				direccion='$cliente->direccion', 
+				email='$cliente->email', 
+				telefono='$cliente->telefono'
+				WHERE
+				cedula = $cliente->cedula";
+
+		$cnx = $this->conectarBD();
+		$rs = pg_query($cnx, $sql);
+		if ($rs)
+		{
+			echo '<script language="javascript">';
+			echo 'success_msg("Cliente modificado correctamente.");';
+			echo '</script>';
+		}else{
+			$error = pg_last_error($cnx);	
+			echo '<script language="javascript">';
+			echo 'error_msg("'.$error.'");';
+			echo '</script>';
+		}	
+		pg_close($cnx);
+	}
 }

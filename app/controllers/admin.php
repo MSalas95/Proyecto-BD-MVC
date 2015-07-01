@@ -44,6 +44,16 @@ class Admin extends Controller
 			$telefono = $_POST['inputTel'];
 			$this->insertarCliente($cedula,$nombre,$apellido,$direccion,$email,$telefono);
 		}
+		if (isset($_POST['enviar2']))
+		{
+			$nombre = $_POST['inputNom2'];
+			$apellido = $_POST['inputApe2'];
+			$cedula = $_POST['inputCed2'];
+			$direccion = $_POST['inputDir2'];
+			$email = $_POST['inputEmail2'];
+			$telefono = $_POST['inputTel2'];
+			$this->modificarCliente($cedula,$nombre,$apellido,$direccion,$email,$telefono);
+		}
 	}
 
 	public function dispositivos()
