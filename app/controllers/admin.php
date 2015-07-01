@@ -33,6 +33,17 @@ class Admin extends Controller
 	{	
 		$clientes = $this->getCliente();
 		$this->view('admin/clientes',[$clientes]);
+
+		if (isset($_POST['enviar']))
+		{
+			$nombre = $_POST['inputNom'];
+			$apellido = $_POST['inputApe'];
+			$cedula = $_POST['inputCed'];
+			$direccion = $_POST['inputDir'];
+			$email = $_POST['inputEmail'];
+			$telefono = $_POST['inputTel'];
+			$this->insertarCliente($cedula,$nombre,$apellido,$direccion,$email,$telefono);
+		}
 	}
 
 	public function dispositivos()

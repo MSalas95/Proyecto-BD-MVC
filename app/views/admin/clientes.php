@@ -75,11 +75,11 @@
 		        	<th data-field="state" data-checkbox="true"></th>
 		            <th data-field="cedula"  data-sortable="true" data-align="center">Cedula</th>
 		            <th data-field="nombre" data-sortable="true" data-align="center">Nombre</th>
-		            <th data-field="apellido" data-align="center">Apellido</th>
+		            <th data-field="apellido" data-sortable="true" data-align="center">Apellido</th>
 		            <th data-field="direccion" data-align="center" data-visible="false">Dirección</th>
-		            <th data-field="email" data-sortable="true" data-align="center">Email</th>
-		            <th data-field="telefono"  data-sortable="true" data-align="center">Telefono</th>
-		            <th data-field="estado" data-width= "0"data-sortable="true" data-align="center" data-cell-style="cellStyle" data-formatter="stateFormatter">Estado</th>
+		            <th data-field="email" data-align="center">Email</th>
+		            <th data-field="telefono"  data-align="center">Telefono</th>
+		            <!--<th data-field="estado" data-width= "0"data-sortable="true" data-align="center" data-cell-style="cellStyle" data-formatter="stateFormatter">Estado</th>-->
 		        </tr>
 		    </thead>
 		</table>
@@ -99,38 +99,38 @@
 	      	  <div class="form-group" >
 			 	<label for="inputEmail3" class="col-sm-4 control-label">Cedula</label>
 			  	<div class="col-sm-6">
-			  		 <input type="text" class="form-control input-md" name="cedula" placeholder="Cedula" id="cedula" required autofocus>
+			  		 <input type="text" class="form-control input-md" name="inputCed" placeholder="Cedula" id="inputCed" required autofocus>
 			  	
 			  	</div> 
 			  </div>
 			  <div class="form-group">
 			 	<label for="inputEmail3" class="col-sm-4 control-label">Nombre</label>
 			  	<div class="col-sm-6">
-			  		 <input type="text" class="form-control input-md" name="nombre" placeholder="Nombre" id="nombre" required >
+			  		 <input type="text" class="form-control input-md" name="inputNom" placeholder="Nombre" id="inputNom" required >
 			  	</div> 
 			  </div>
 			  <div class="form-group">
 			 	<label for="inputEmail3" class="col-sm-4 control-label">Apellido</label>
 			  	<div class="col-sm-6">
-			  		 <input type="text" class="form-control input-md" name="apellido" placeholder="Apellido" id="apellido" required>
+			  		 <input type="text" class="form-control input-md" name="inputApe" placeholder="Apellido" id="inputApe" required>
 			  	</div> 
 			  </div>
 			  <div class="form-group">
 			 	<label for="inputEmail3" class="col-sm-4 control-label">Direccion</label>
 			  	<div class="col-sm-6">
-			  		 <input type="text" class="form-control input-md" name="direccion" placeholder="Direccion" id="direccion" required>
+			  		 <input type="text" class="form-control input-md" name="inputDir" placeholder="Direccion" id="inputDir" required>
 			  	</div> 
 			  </div>
 			  <div class="form-group">
 			 	<label for="inputEmail3" class="col-sm-4 control-label">Email</label>
 			  	<div class="col-sm-6">
-			  		 <input type="text" class="form-control input-md" name="email" placeholder="Email" id="email" required>
+			  		 <input type="text" class="form-control input-md" name="inputEmail" placeholder="Email" id="inputEmail" required>
 			  	</div> 
 			  </div>
 			  <div class="form-group">
 			 	<label for="inputEmail3" class="col-sm-4 control-label">Teléfono</label>
 			  	<div class="col-sm-6">
-			  		 <input type="text" class="form-control input-md" name="telefono" placeholder="Teléfono" id="telefono" required>
+			  		 <input type="text" class="form-control input-md" name="inputTel" placeholder="Teléfono" id="inputTel" required>
 			  	</div> 
 			  </div>
 			  		<div class="modal-footer">
@@ -207,16 +207,39 @@
 			  "hideEasing": "linear",
 			  "showMethod": "fadeIn",
 			  "hideMethod": "fadeOut",
-			  "tapToDismiss": false
+			  "tapToDismiss": true
 			}
-			var msg = '¿Desea eliminar los elementos seleccionados?</br></br> \
-			<button type="button" class="btn btn-default" onclick="closeToast()">Cancelar</button> \
-			<button type="button" class="btn btn-primary " style="margin-left: 10px;">Aceptar</button>';
+			var msg = '¿Desea eliminar los registros seleccionados?</br></br> \
+			<button type="button" class="btn btn-default" >Cancelar</button> \
+			<button type="button" class="btn btn-primary " style="margin-left: 10px;" onclick="aceptarEliminar()">Aceptar</button>';
 			toastr.warning(msg);
 		}
 
-		function closeToast(){
-			toastr.clear();
+		function aceptarEliminar(){
+			registrosEliminados();
+		}
+
+		function registrosEliminados(){
+			toastr.options = {
+			  "closeButton": true,
+			  "debug": false,
+			  "newestOnTop": false,
+			  "progressBar": true,
+			  "positionClass": "toast-bottom-full-width",
+			  "preventDuplicates": false,
+			  "onclick": null,
+			  "showDuration": "300",
+			  "hideDuration": "1000",
+			  "timeOut": 0,
+			  "extendedTimeOut": 0,
+			  "showEasing": "swing",
+			  "hideEasing": "linear",
+			  "showMethod": "fadeIn",
+			  "hideMethod": "fadeOut",
+			  "tapToDismiss": true
+			}
+			toastr.success("Se han eliminado x registros.");
+
 		}
 
 	</script>

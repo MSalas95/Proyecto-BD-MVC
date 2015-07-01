@@ -10,18 +10,21 @@ class Controller
 		return new $model;
 	}
 
-	public function view($view,$data = []){
+	public function view($view,$data = [])
+	{
 		require_once '../app/views/'. $view .'.php';
 	}
 
-	public function connectDB(){
+	public function connectDB()
+	{
 		$con = mysqli_connect($this->servidor,$this->usuario,$this->pass,$this->bd) or die ('no se conecta');
 		return $con;
 	}
 
 	//Conectar con base de datos postgresql
 
-	public function conectarBD(){
+	public function conectarBD()
+	{
 
 		$usuario = "postgres";$passwd = "123";$db = "dfilo";$port = 5432;$host = "localhost";
 
@@ -33,7 +36,8 @@ class Controller
 
 	//GET
 
-	public function getCliente(){
+	public function getCliente()
+	{
 		$cnx = $this->conectarBD();
 
 		$query = 'select array_to_json(array_agg(row_to_json(t)))
@@ -52,22 +56,26 @@ class Controller
 
 	//Realizar LOGIN
 
-	public function login($cedula,$clave){
+	public function login($cedula,$clave)
+	{
 			$sql = "SELECT * FROM tecnico where cedula= '".$cedula."' and clave= '".$clave."'";
 			$con = $this->connectDB();
 			$user = mysqli_query($con,$sql);
 
-			if ($row = mysqli_fetch_array($user)) {
+			if ($row = mysqli_fetch_array($user)) 
+			{
 				echo "Login realizado";
-			} else {
+			} else 
+			{
 				echo "Datos invalidos";
 			}
 
 	}
 
-	// INSERTAR UN TECNICO
+	// INSERTAR
 
-	public function insertarTecnico($tecnico){
+	public function insertarTecnico($tecnico)
+	{
 		$sql = 	"INSERT INTO tecnico (nombre,apellido,cedula,clave) 
 				 VALUES ('$tecnico->nombre','$tecnico->apellido','$tecnico->cedula','$tecnico->clave')";
 		$con = $this->connectDB();
@@ -76,9 +84,25 @@ class Controller
 		echo 'Usuario Registrado';		
 	}
 
-	public function registrarTecnico($nombre,$apellido,$cedula,$clave){
+	public function registrarTecnico($nombre,$apellido,$cedula,$clave)
+	{
 		require_once '../app/models/Tecnico.php';
 		$tecnico = new Tecnico($nombre,$apellido,$cedula,$clave);
 		$this->insertarTecnico($tecnico);
 	}
+
+	public function insertarCliente($cedula,$nombre,$apellido,$direccion,$email,$telefono)
+	{
+		require_once '../app/models/Cliente.php';
+		$cliente = new Cliente($cedula,$nombre,$apellido,$direccion,$email,$telefono);
+
+		$sql = 	"INSERT INTO cliente
+				 VALUES ('$cliente->cedula','$cliente->nombre',
+				 		 '$cliente->apellido','$cliente->direccion',
+				 		 '$cliente->email','$cliente->telefono')";
+
+		$cnx = $this->conectarBD();
+		$rs = pg_query($cnx, $sql) or die("No se puede ejecutar la consulta $query\n");		
+		pg_close($cnx);
+	}	
 }
