@@ -54,7 +54,8 @@
 			text: "",   
 			type: "warning",   
 			showCancelButton: true,   
-			confirmButtonColor: "#368ee0",   
+			confirmButtonColor: "#368ee0", 
+			confirmButtonText: "Aceptar",   
 			closeOnConfirm: false });
 	}
 	</script>
