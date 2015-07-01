@@ -102,7 +102,18 @@ class Controller
 				 		 '$cliente->email','$cliente->telefono')";
 
 		$cnx = $this->conectarBD();
-		$rs = pg_query($cnx, $sql) or die("No se puede ejecutar la consulta $query\n");		
+		$rs = pg_query($cnx, $sql);
+		if ($rs)
+		{
+			echo '<script language="javascript">';
+			echo 'success_msg("Cliente insertado correctamente.");';
+			echo '</script>';
+		}else{
+			$error = pg_last_error($cnx);	
+			echo '<script language="javascript">';
+			echo 'error_msg("'.$error.'");';
+			echo '</script>';
+		}	
 		pg_close($cnx);
 	}	
 }

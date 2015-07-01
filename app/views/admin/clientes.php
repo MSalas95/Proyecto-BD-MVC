@@ -16,6 +16,7 @@
 	<script src="app/res/js/bootstrap-table.js"></script>
 	<script src="app/res/js/bootstrap-table-toolbar.js"></script>
 	<script src="app/res/js/bootstrap-table-es-SP.js"></script>
+	<script src="app/res/js/alerts.js"></script>
 
 	
 </head>
@@ -106,19 +107,19 @@
 			  <div class="form-group">
 			 	<label for="inputEmail3" class="col-sm-4 control-label">Nombre</label>
 			  	<div class="col-sm-6">
-			  		 <input type="text" class="form-control input-md" name="inputNom" placeholder="Nombre" id="inputNom" required >
+			  		 <input type="text" class="form-control input-md" name="inputNom" placeholder="Nombre" id="inputNom" >
 			  	</div> 
 			  </div>
 			  <div class="form-group">
 			 	<label for="inputEmail3" class="col-sm-4 control-label">Apellido</label>
 			  	<div class="col-sm-6">
-			  		 <input type="text" class="form-control input-md" name="inputApe" placeholder="Apellido" id="inputApe" required>
+			  		 <input type="text" class="form-control input-md" name="inputApe" placeholder="Apellido" id="inputApe" >
 			  	</div> 
 			  </div>
 			  <div class="form-group">
 			 	<label for="inputEmail3" class="col-sm-4 control-label">Direccion</label>
 			  	<div class="col-sm-6">
-			  		 <input type="text" class="form-control input-md" name="inputDir" placeholder="Direccion" id="inputDir" required>
+			  		 <input type="text" class="form-control input-md" name="inputDir" placeholder="Direccion" id="inputDir">
 			  	</div> 
 			  </div>
 			  <div class="form-group">
