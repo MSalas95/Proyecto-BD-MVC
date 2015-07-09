@@ -46,5 +46,21 @@ li:hover{
  }
 
 
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+    background-color: #368ee0;
+    color: white !important;
+}
+
+.dropdown-menu > li > a{
+	color: #2c3e50 !important;
+	text-align: center;
+}
+
+
+.navbar-default .navbar-nav>.open>a:focus{
+	color: #2c3e50 !important;
+	background-color: white;
+}
+
 
 

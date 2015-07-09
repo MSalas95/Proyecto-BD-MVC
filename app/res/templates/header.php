@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title><?php $titulo ?></title>
+	<title><?php echo $titulo; ?></title>
 	<base href="http://localhost/proyectobd/">
 	<link href="app/res/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	<link href="app/res/css/awesome-bootstrap-checkbox.css"         rel="stylesheet">
@@ -22,7 +22,7 @@
 </head>
 <body>
 	<?php 
-		$tabs = array("","","","","","","");
+		$tabs = array("","","","","","","","");
 		$tabs[$position]="active";   
 	?>
 	<nav class="navbar-default nav-admin">
@@ -33,15 +33,32 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
 					
-		            <li class="<?php echo $tabs[0];?>"><a href="http://localhost/proyectobd/public/admin/clientes" >Clientes</a></li>
-		            <li class="<?php echo $tabs[1];?>"><a href="http://localhost/proyectobd/public/admin/dispositivos">Dispositivos</a></li>
-		            <li class="<?php echo $tabs[2];?>"><a href="http://localhost/proyectobd/public/admin/repuestos" >
+		            <li class="<?php echo $tabs[0];?>"><a href="http://localhost/proyectobd/public/clientes" >Clientes</a></li>
+		            <li class="<?php echo $tabs[1];?>"><a href="http://localhost/proyectobd/public/dispositivos">Dispositivos</a></li>
+		            <li class="<?php echo $tabs[2];?>"><a href="http://localhost/proyectobd/public/repuestos" >
 		            Repuestos</a></li>
-		            <li class="<?php echo $tabs[3];  ?>"><a href="http://localhost/proyectobd/public/admin/tecnicos">Técnicos</a></li>
-					<li class="<?php echo $tabs[4];  ?>"><a href="http://localhost/proyectobd/public/admin/reparaciones">Reparaciones</a></li>
-					<li class="<?php echo $tabs[5];  ?>"><a href="http://localhost/proyectobd/public/admin/reportes" >
-		            Reportes</a></li>
-		            <li class="<?php echo $tabs[6];  ?>" title="Cerrar sesión"><a onclick="cerrarSesion();"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></a></li>
+		            <li class="<?php echo $tabs[3];  ?>"><a href="http://localhost/proyectobd/public/tecnicos">Técnicos</a></li>
+					<li class="<?php echo $tabs[4];  ?>"><a href="http://localhost/proyectobd/public/reparaciones">Reparaciones</a></li>
+					<li class="<?php echo $tabs[5];  ?>"><a href="http://localhost/proyectobd/public/facturas" >
+		            Facturas</a></li>		            
+
+		            <li class="<?php echo $tabs[6];  ?>">
+		            	<a href="#"
+		            	   class="dropdown-toggle" 
+		            	   data-toggle="dropdown" role="button" 
+		            	   aria-haspopup="true" aria-expanded="false">
+		            	   Reportes <span class="caret"></span></a>	
+						
+						<ul class="dropdown-menu">
+			            	<li><a href="http://localhost/proyectobd/public/reportes/reporte1">Reporte 1</a></li>
+			            	<li><a href="#">Reporte 2</a></li>
+			            	<li><a href="#">Reporte 3</a></li>
+			            	<li><a href="#">Reporte 4</a></li>
+			            	<li><a href="#">Reporte 5</a></li>			            	
+			          	</ul>	
+
+		            </li>
+		            <li class="<?php echo $tabs[7];  ?>" title="Cerrar sesión"><a onclick="cerrarSesion();"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></a></li>
 				</ul>
 			</div>	
 		</div>
@@ -49,13 +66,16 @@
 
 	<script type="text/javascript">
 	function cerrarSesion(){
-		swal({   
+		 swal({   
 			title: "¿Desea cerrar sesión?",   
 			text: "",   
 			type: "warning",   
 			showCancelButton: true,   
 			confirmButtonColor: "#368ee0", 
-			confirmButtonText: "Aceptar",   
-			closeOnConfirm: false });
+			confirmButtonText: "Aceptar", 
+			closeOnConfirm: false },
+			 function(){   
+			 	window.location.href="http://localhost/proyectobd/public/logout";	    		
+	    	});
 	}
 	</script>

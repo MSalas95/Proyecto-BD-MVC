@@ -8,9 +8,6 @@
     <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal" title="Agregar">
         <i class="glyphicon glyphicon-plus"></i>
     </button>
-    <button type="button" class="btn btn-default" onclick="eliminar()" title="Eliminar">
-        <i class="glyphicon glyphicon-trash"></i>
-    </button>
 </div>
 
 
@@ -32,7 +29,6 @@
 			data-locale="es-SP">
 	    <thead>
 	        <tr>
-	        	<th data-field="state" data-checkbox="true"></th>
 	            <th data-field="cedula"  data-sortable="true" data-align="center">Cedula</th>
 	            <th data-field="nombre" data-sortable="true" data-align="center">Nombre</th>
 	            <th data-field="apellido" data-sortable="true" data-align="center">Apellido</th>
@@ -85,7 +81,7 @@
 		  <div class="form-group">
 		 	<label for="inputEmail3" class="col-sm-4 control-label">Email</label>
 		  	<div class="col-sm-6">
-		  		 <input type="text" class="form-control input-md" name="inputEmail" placeholder="Email" id="inputEmail" required>
+		  		 <input type="email" class="form-control input-md" name="inputEmail" placeholder="Email" id="inputEmail" required>
 		  	</div> 
 		  </div>
 		  <div class="form-group">
@@ -146,7 +142,7 @@
 		  <div class="form-group">
 		 	<label for="inputEmail3" class="col-sm-4 control-label">Email</label>
 		  	<div class="col-sm-6">
-		  		 <input type="text" class="form-control input-md" name="inputEmail2" placeholder="Email" id="inputEmail2" required>
+		  		 <input type="email" class="form-control input-md" name="inputEmail2" placeholder="Email" id="inputEmail2" required>
 		  	</div> 
 		  </div>
 		  <div class="form-group">
@@ -216,9 +212,9 @@
 	        '<a class="edit" data-toggle="modal" data-target="#modificarModal" style="margin-left:10px; margin-right:10px;" style href="javascript:void(0)" title="Editar">',
 	        '<i class="glyphicon glyphicon-edit"></i>',
 	        '</a>',
-	        '<a class="remove " href="javascript:void(0)" title="Eliminar">',
+	        /*'<a class="remove " href="javascript:void(0)" title="Eliminar">',
 	        '<i class="glyphicon glyphicon-remove"></i>',
-	        '</a>'
+	        '</a>'*/
 	    ].join('');
 	}	
 
@@ -243,9 +239,28 @@
 			showCancelButton: true,   
 			confirmButtonColor: "#368ee0", 
 			confirmButtonText: "Aceptar", 
-			closeOnConfirm: false });
+			closeOnConfirm: false },
+			 function(){   
+			 	eliminarCli(row.cedula,row.nombre,row.apellido);
+	    		
+	    	});
 	    }
 	};
+
+	function eliminarCli(cedula,nombre,apellido) {
+		   $.ajax({
+		      url:'http://localhost/proyectobd/public/data/eliminarCliente/'+cedula,
+		      complete: function (response) {
+		      	  swal("Eliminado", response.responseText+" "+nombre+" "+apellido, "success");
+		          	
+		      },
+		      error: function () {
+
+		      },
+		   
+		});
+		return false;
+	}
 	
 	function eliminar(){
 		

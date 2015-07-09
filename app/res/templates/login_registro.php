@@ -16,7 +16,7 @@
 	<div class="container">
 		<div class="principal">
 
-			<h1> <img src="app/res/img/logo.png" alt="" width="50" height="50">Logo</h1>
+			<h1> <img src="app/res/img/logo.png" alt="" width="50" height="50">Dist. Filo</h1>
 
 			<div class="cuerpo-login">
 				
