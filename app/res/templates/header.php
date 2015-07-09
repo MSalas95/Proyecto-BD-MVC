@@ -50,9 +50,9 @@
 		            	   Reportes <span class="caret"></span></a>	
 						
 						<ul class="dropdown-menu">
-			            	<li><a href="http://localhost/proyectobd/public/reportes/reporte1">Reporte 1</a></li>
-			            	<li><a href="#">Reporte 2</a></li>
-			            	<li><a href="#">Reporte 3</a></li>
+			            	<li><a href="#" data-toggle="modal" data-target="#modalR1">Reporte 1</a></li>
+			            	<li><a href="#" data-toggle="modal" data-target="#modalR2">Reporte 2</a></li>
+			            	<li><a href="#" data-toggle="modal" data-target="#modalR3">Reporte 3</a></li>
 			            	<li><a href="#">Reporte 4</a></li>
 			            	<li><a href="#">Reporte 5</a></li>			            	
 			          	</ul>	
@@ -63,6 +63,146 @@
 			</div>	
 		</div>
 	</nav>
+
+
+<!-- Modal para R1-->
+<div class="modal fade" id="modalR1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Reparaciones completadas por un tecnico en un periodo.</h4>
+            </div>
+            <div class="modal-body modal-body-custom">
+                <form class="form-horizontal" method="post">
+                    
+                   
+                    
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-4 control-label">Cedula del Tecnico</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control input-md" name="inputCedulaTec" placeholder="Cedula del Tecnico" id="inputCedulaTec" required autofocus>
+                        </div>
+                    </div>  
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-4 control-label">Fecha Inicial</label>
+                        <div class="col-sm-6">
+                            <input type="date" class="form-control input-md" name="inputfechaIni" placeholder="Fecha de Recibo" id="inputfechaIni" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-4 control-label">Fecha Final</label>
+                        <div class="col-sm-6">
+                            <input type="date" class="form-control input-md" name="inputfechaFin" placeholder="Fecha de Recibo" id="inputfechaFin"  required>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        <input type="submit" name="enviarR1" value="Aceptar" class="btn btn-primary">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para R2-->
+<div class="modal fade" id="modalR2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Reparaciones completadas por un tecnico en un periodo.</h4>
+            </div>
+            <div class="modal-body modal-body-custom">
+                <form class="form-horizontal" method="post">
+                    
+                   
+                    
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-4 control-label">Cedula del Tecnico</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control input-md" name="inputCedulaTec" placeholder="Cedula del Tecnico" id="inputCedulaTec" required autofocus>
+                        </div>
+                    </div>  
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-4 control-label">Cedula del Cliente</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control input-md" name="inputCedulaCli" placeholder="Cedula del Cliente" id="inputCedulaCli" required autofocus>
+                        </div>
+                    </div> 
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-4 control-label">Fecha Inicial</label>
+                        <div class="col-sm-6">
+                            <input type="date" class="form-control input-md" name="inputfechaIni" placeholder="Fecha de Recibo" id="inputfechaIni" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-4 control-label">Fecha Final</label>
+                        <div class="col-sm-6">
+                            <input type="date" class="form-control input-md" name="inputfechaFin" placeholder="Fecha de Recibo" id="inputfechaFin"  required>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        <input type="submit" name="enviarR2" value="Aceptar" class="btn btn-primary">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para R3-->
+<div class="modal fade" id="modalR3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Reparaciones completadas por un tecnico en un periodo.</h4>
+            </div>
+            <div class="modal-body modal-body-custom">
+                <form class="form-horizontal" method="post">
+                    
+                   
+                    
+                     
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-4 control-label">Cedula del Cliente</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control input-md" name="inputCedulaCli" placeholder="Cedula del Cliente" id="inputCedulaCli" required autofocus>
+                        </div>
+                    </div> 
+                    
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-4 control-label">Estado</label>
+                        <div class="col-sm-6">
+                            <select  class="form-control" 	name="inputEstado" id="inputEstado">
+								<option value="REPARADO" selected>REPARADO</option>
+								<option value="NO REPARADO">NO REPARADO</option>
+							</select>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        <input type="submit" name="enviarR3" value="Aceptar" class="btn btn-primary">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 	<script type="text/javascript">
 	function cerrarSesion(){
@@ -79,3 +219,39 @@
 	    	});
 	}
 	</script>
+
+
+	<?php 
+
+	if (isset($_POST['enviarR1'])) {
+			
+			$inicio = $_POST['inputfechaIni'];
+			$fin    = $_POST['inputfechaFin'];
+			$cedula = $_POST['inputCedulaTec'];
+
+			
+			die("<script>location.href = 'http://localhost/proyectobd/public/reportes/reporte1/".$inicio."/".$fin."/".$cedula."'</script>");
+	}
+
+	if (isset($_POST['enviarR2'])) {
+			
+			$inicio = $_POST['inputfechaIni'];
+			$fin    = $_POST['inputfechaFin'];
+			$cedulaT = $_POST['inputCedulaTec'];
+			$cedulaC= $_POST['inputCedulaCli'];
+			
+			die("<script>location.href = 'http://localhost/proyectobd/public/reportes/reporte2/".$inicio."/".$fin."/".$cedulaT."/".$cedulaC."'</script>");
+	}
+
+	if (isset($_POST['enviarR3'])) {
+			
+			
+			$estado = $_POST['inputEstado'];
+			$cedulaC= $_POST['inputCedulaCli'];
+			
+			die("<script>location.href = 'http://localhost/proyectobd/public/reportes/reporte3/".$estado."/".$cedulaC."'</script>");
+	}
+
+
+
+	 ?>

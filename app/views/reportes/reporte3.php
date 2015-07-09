@@ -2,7 +2,7 @@
 	$titulo = "Reportes";
 	$position = 6;	
 	require_once '../app/res/templates/header.php';
-    $url= "public/reportes/showr2/".$data[0]."/".$data[1]."/".$data[2];
+    $url= "public/reportes/showr3/".$data[0]."/".$data[1];
     
 ?>
 
@@ -25,14 +25,12 @@
             data-locale="es-SP">
         <thead>
         <tr>
-            <th data-field="imei"  data-sortable="true" data-align="center">IMEI</th>
-            <th data-field="fecha_recibido" data-sortable="true" data-align="center">Fecha Recibido</th>
-            <th data-field="descripcion" data-align="center" data-visible="false">Descripción</th>            
-            <th data-field="observacion" data-align="center" data-visible="false">Observación</th>
-             <th data-field="historia" data-align="center" data-visible="false">Historia</th>
-            <th data-field="cedula_tecnico" data-sortable="true" data-align="center">Cedula del Técnico</th>
-            <th data-field="estado" data-sortable="true" data-align="center">Estado</th>
-            
+            <th data-field="cedula"  data-sortable="true" data-align="center">Cedula</th>
+                <th data-field="nombre" data-sortable="true" data-align="center">Nombre</th>
+                <th data-field="apellido" data-sortable="true" data-align="center">Apellido</th>
+                <th data-field="direccion" data-align="center" data-visible="false">Dirección</th>
+                <th data-field="email" data-align="center">Email</th>
+                <th data-field="telefono"  data-align="center">Teléfono</th>
         </tr>
         </thead>
     </table>
