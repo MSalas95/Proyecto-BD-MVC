@@ -1,21 +1,14 @@
 <?php 
-	$titulo = "Reparaciones";
+	$titulo = "Dispositivos";
 	$position = 6;	
 	require_once '../app/res/templates/header.php';
-    
 ?>
 
-
-<div id="toolbar" class="btn-group">
-    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal" title="Agregar">
-        <i class="glyphicon glyphicon-plus"></i>
-    </button>
-</div>
 
 <div class="container" style="margin-top:40px;">
     <table  id="table"
             class="table table-hover table-bordered"
-            data-url="public/reparaciones/show"
+            data-url="public/reportes/showr1"
             data-toggle="table"
             data-height="0"
             data-page-size = "10"
@@ -31,14 +24,11 @@
         <thead>
         <tr>
             <th data-field="imei"  data-sortable="true" data-align="center">IMEI</th>
-            <th data-field="fecha_recibido" data-sortable="true" data-align="center">Fecha Recibido</th>
-            <th data-field="descripcion" data-align="center" data-visible="false">Descripción</th>            
-            <th data-field="observacion" data-align="center" data-visible="false">Observación</th>
-             <th data-field="historia" data-align="center" data-visible="false">Historia</th>
-            <th data-field="cedula_tecnico" data-sortable="true" data-align="center">Cedula del Técnico</th>
-            <th data-field="estado" data-sortable="true" data-align="center">Estado</th>
+            <th data-field="marca" data-sortable="true" data-align="center">Marca</th>
+            <th data-field="modelo" data-sortable="true" data-align="center">Modelo</th>
+            <th data-field="descripcion" data-align="center">Descripción</th>
+            <th data-field="ced_cli" data-sortable="true" data-align="center">Cedula del Cliente</th>
             <th data-field="action" data-align="center" data-formatter="actionFormatter" data-events="actionEvents">Accion</th>
-            <!--<th data-field="estado" data-width= "0"data-sortable="true" data-align="center" data-cell-style="cellStyle" data-formatter="stateFormatter">Estado</th>-->
         </tr>
         </thead>
     </table>
@@ -50,34 +40,39 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Insertar Reparación</h4>
+                <h4 class="modal-title" id="myModalLabel">Insertar Dispositivo</h4>
             </div>
             <div class="modal-body modal-body-custom">
                 <form class="form-horizontal" method="post">
                     <div class="form-group" >
                         <label for="inputEmail3" class="col-sm-4 control-label">IMEI</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control input-md" name="inputImei" placeholder="IMEI" id="inputImei" required autofocus>
+                            <input type="text" class="form-control input-md" name="inputImei" placeholder="Imei" id="inputImei" required autofocus>
+
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-4 control-label">Fecha Recibido</label>
+                        <label for="inputEmail3" class="col-sm-4 control-label">Marca</label>
                         <div class="col-sm-6">
-                            <input type="date" class="form-control input-md" name="inputfechaRec" placeholder="Fecha de Recibo" id="inputfechaRec" required >
+                            <input type="text" class="form-control input-md" name="inputMarca" placeholder="Marca" id="inputMarca" required >
                         </div>
-                    </div>                   
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-4 control-label">Modelo</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control input-md" name="inputModelo" placeholder="Modelo" id="inputModelo" required>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label for="inputEmail3" class="col-sm-4 control-label">Descripción</label>
                         <div class="col-sm-6">
-                            <input type="textarea" class="form-control input-md" name="inputDescrip" placeholder="Descripcion" id="inputDescrip" required>
+                            <input type="text" class="form-control input-md" name="inputDescrip" placeholder="Descripcion" id="inputDescrip" required>
                         </div>
                     </div>
-                                        
-                    
                     <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-4 control-label">Cedula del Tecnico</label>
+                        <label for="inputEmail3" class="col-sm-4 control-label">Cedula del Cliente</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control input-md" name="inputCedulaTec" placeholder="Cedula del Tecnico" id="inputCedulaTec" required>
+                            <input type="text" class="form-control input-md" name="inputCedulaCli" placeholder="Cedula del Cliente" id="inputCedulaCli" required>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -96,7 +91,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Modificar Reparación</h4>
+                <h4 class="modal-title" id="myModalLabel">Modificar Dispositivo</h4>
             </div>
             <div class="modal-body modal-body-custom">
                 <form class="form-horizontal" method="post">
@@ -104,48 +99,33 @@
                         <label for="inputEmail3" class="col-sm-4 control-label">IMEI</label>
                         <div class="col-sm-6">
                             <input type="text" class="form-control input-md" name="inputImei2" placeholder="Imei" id="inputImei2" readonly>
+
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-4 control-label">Fecha Recibido</label>
+                        <label for="inputEmail3" class="col-sm-4 control-label">Marca</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control input-md" name="inputfechaRec2" placeholder="Fecha de Recibo" id="inputfechaRec2" readonly >
+                            <input type="text" class="form-control input-md" name="inputMarca2" placeholder="Marca" id="inputMarca2" required >
                         </div>
                     </div>
-                    
                     <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-4 control-label">Cedula del Tecnico</label>
+                        <label for="inputEmail3" class="col-sm-4 control-label">Modelo</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control input-md" name="inputCedulaTec2" placeholder="Cedula del Tecnico" id="inputCedulaTec2" readonly>
+                            <input type="text" class="form-control input-md" name="inputModelo2" placeholder="Modelo" id="inputModelo2" required>
                         </div>
                     </div>
-                   
                     <div class="form-group">
                         <label for="inputEmail3" class="col-sm-4 control-label">Descripción</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control input-md" name="inputDescrip2" placeholder="Descripcion" id="inputDescrip2">
+                            <input type="text" class="form-control input-md" name="inputDescrip2" placeholder="Descripcion" id="inputDescrip2" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-4 control-label">Historia</label>
+                        <label for="inputEmail3" class="col-sm-4 control-label">Cedula del Cliente</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control input-md" name="inputHist2" placeholder="Historia" id="inputHist2">
+                            <input type="text" class="form-control input-md" name="inputCedulaCli2" placeholder="Cedula del Cliente" id="inputCedulaCli2" readonly>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-4 control-label">Estado</label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control input-md" name="inputEstado2" placeholder="Estado" id="inputEstado2" required>
-                        </div>
-                    </div>
-                   
-                    <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-4 control-label">Observación</label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control input-md" name="inputObser2" placeholder="Observación" id="inputObser2" required>
-                        </div>
-                    </div>
-                    
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                         <input type="submit" name="enviar2" value="Aceptar" class="btn btn-primary">
@@ -155,8 +135,6 @@
         </div>
     </div>
 </div>
-
-
 <script type="text/javascript">
 
     function formatAdvancedSearch(){
@@ -178,12 +156,9 @@
             '<a class="edit" data-toggle="modal" data-target="#modificarModal" style="margin-left:10px; margin-right:10px;" style href="javascript:void(0)" title="Editar">',
             '<i class="glyphicon glyphicon-edit"></i>',
             '</a>',
-            /*'<a class="remove" href="javascript:void(0)" title="Eliminar">',
-             '<i class="glyphicon glyphicon-remove"></i>',
-             '</a>',*/ 
-            '<a class="factura" data-toggle="modal" data-target="#facturarModal" style="margin-left:10px; margin-right:10px;" style href="javascript:void(0)" title="Facturar">',
-            '<i class="glyphicon glyphicon-list-alt"></i>',
-            '</a>'
+            /*'<a class="remove " href="javascript:void(0)" title="Eliminar">',
+            '<i class="glyphicon glyphicon-remove"></i>',
+            '</a>'*/
         ].join('');
     }
 
@@ -192,83 +167,79 @@
         'click .edit': function (e, value, row, index) {
 
             $("#inputImei2").val(row.imei);
-            $("#inputfechaRec2").val(row.fecha_recibido);
+            $("#inputMarca2").val(row.marca);
+            $("#inputModelo2").val(row.modelo);
             $("#inputDescrip2").val(row.descripcion);
-            $("#inputEstado2").val(row.estado);
-            $("#inputHist2").val(row.historia);
-            $("#inputObser2").val(row.observacion);
-            $("#inputCedulaTec2").val(row.cedula_tecnico);
+            $("#inputCedulaCli2").val(row.ced_cli);
 
             $('#eventsTable').bootstrapTable('refresh'); //actualiza la tabla
         },
-       /* 'click .remove': function (e, value, row, index) {
+        'click .remove': function (e, value, row, index) {
             swal({
                 title: "¿Desea eliminar?",
-                text: "¿Seguro desea eliminar la reparacion "+row.imei+"?",
+                text: "¿Seguro desea eliminar el dispositivo "+row.marca+" "+row.modelo+"?",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#368ee0",
                 confirmButtonText: "Aceptar",
                 closeOnConfirm: false });
-        },*/
-        'click .factura': function (e, value, row, index) {
-             swal({
-                title: "¿Desea generar la factura?",
-                text: "Al momento de generar la factura usted no podra seguir trabajando sobre la reparacion!",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#368ee0",
-                confirmButtonText: "Aceptar",
-                closeOnConfirm: true},
-                    function(){   
-                        crearFactura(row.imei,row.fecha_recibido);
-                    });
-
-           
         }
-
     };
 
-    function crearFactura(imei,fecha) {
-           $.ajax({
-              url:'http://localhost/proyectobd/public/facturas/insertar/'+imei+'/'+fecha,
-              complete: function (response) {
-                  swal("Factura creada.", "Factura creada.", "success");
-                  window.location.href =response.responseText;
-              },
-              error: function () {
+    function eliminar(){
 
-              },
-           
-        });
-        return false;
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-bottom-full-width",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": 0,
+            "extendedTimeOut": 0,
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut",
+            "tapToDismiss": true
+        }
+        var msg = '¿Desea eliminar los registros seleccionados?</br></br> \
+		<button type="button" class="btn btn-default" >Cancelar</button> \
+		<button type="button" class="btn btn-primary " style="margin-left: 10px;" onclick="aceptarEliminar()">Aceptar</button>';
+        toastr.warning(msg);
     }
 
-    function cellStyle(value, row, index) {
-
-        var classes = ['active', 'success', 'info', 'warning', 'danger'];
-
-        if (row.estado=='REPARADO') {
-            return {
-                classes: classes[4]
-            };
-        }
-
-        if (row.estado=='EN PROCESO DE REPARACION') {
-            return {
-                classes: classes[3]
-            };
-        }
-
-        return {
-            classes: classes[1]
-        };
+    function aceptarEliminar(){
+        registrosEliminados();
     }
 
+    function registrosEliminados(){
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-bottom-full-width",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": 0,
+            "extendedTimeOut": 0,
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut",
+            "tapToDismiss": true
+        }
+        toastr.success("Se han eliminado x registros.");
 
+    }
 
 </script>
-
 
 </body>
 </html>

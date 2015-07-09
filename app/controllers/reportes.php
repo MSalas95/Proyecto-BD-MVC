@@ -17,6 +17,10 @@ class Reportes extends Controller
        $this->view('reportes/reporte1');
        
     }
+
+    public function showr1($inicio,$fin,$cedula){
+        
+    }
 	
 
 }
